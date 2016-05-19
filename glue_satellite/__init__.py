@@ -1,2 +1,2 @@
 def setup():
-    pass
+    from .data_factory import geospatial_reader
