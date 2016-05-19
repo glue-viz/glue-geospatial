@@ -5,10 +5,13 @@ from glue.config import data_factory
 
 
 def is_geospatial(filename):
-    with rasterio.open(filename) as src:
-        if src.width > 0 and src.height > 0:
+    try:
+        with rasterio.open(filename) as src:
+            src.read()
             return True
-    return False
+        return False
+    except:
+        return False
 
 
 @data_factory(
@@ -34,4 +37,4 @@ def geospatial_reader(filename):
             data.add_component(component=band.astype(float),
                                label='Band {0}'.format(iband))
 
-
+    return data
