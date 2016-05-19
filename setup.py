@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 entry_points = """
 [glue.plugins]
-glue_satellite=glue_satellite:setup
+glue_geospatial=glue_geospatial:setup
 """
 
 try:
@@ -16,14 +16,14 @@ except (IOError, ImportError):
     with open('README.md') as infile:
         LONG_DESCRIPTION = infile.read()
 
-with open('glue_satellite/version.py') as infile:
+with open('glue_geospatial/version.py') as infile:
     exec(infile.read())
 
-setup(name='glue-satellite',
+setup(name='glue-geospatial',
       version=__version__,
-      description='Experimental glue plugin for satellite imagery',
+      description='Experimental glue plugin for geospatial imagery',
       long_description=LONG_DESCRIPTION,
-      url="https://github.com/glue-viz/glue-satellite",
+      url="https://github.com/glue-viz/glue-geospatial",
       author='',
       author_email='',
       packages = find_packages(),
