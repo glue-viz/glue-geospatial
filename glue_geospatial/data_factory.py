@@ -28,7 +28,7 @@ def geospatial_reader(filename):
 
     data = Data()
 
-    with rasterio.open('Landsat8_Subset/Landsat8_Subset.tif') as src:
+    with rasterio.open(filename) as src:
         for iband, band in enumerate(src.read()):
             # TODO: determine the proper labels for each band
             data.add_component(component=band.astype(float),
