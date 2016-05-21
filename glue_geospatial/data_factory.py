@@ -9,8 +9,8 @@ from glue.config import data_factory
 def is_geospatial(filename):
     try:
         with rasterio.open(filename) as src:
-            src.read()
-            return True
+            if src.count > 0:
+                return True
         return False
     except:
         return False
