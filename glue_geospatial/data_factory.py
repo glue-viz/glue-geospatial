@@ -1,3 +1,5 @@
+import numpy as np
+
 import rasterio
 
 from glue.core import Data
@@ -34,7 +36,13 @@ def geospatial_reader(filename):
     with rasterio.open(filename) as src:
         for iband, band in enumerate(src.read()):
             # TODO: determine the proper labels for each band
-            data.add_component(component=band.astype(float),
+
+            # NB: We have to flip the raw data in the up-down direction
+            # as Glue plots using the matplotlib imshow argument `origin='lower'`
+            # and otherwise the data comes up outside down.
+            # WARNING: This may cause issues with other (non-matplotlib) image
+            # viewers
+            data.add_component(component=np.flipud(band.astype(float)),
                                label='Band {0}'.format(iband))
 
     return data
