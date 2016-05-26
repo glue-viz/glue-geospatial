@@ -34,8 +34,19 @@ def geospatial_reader(filename):
     data = Data()
 
     with rasterio.open(filename) as src:
+        tags = src.tags()
+
         for iband, band in enumerate(src.read()):
-            # TODO: determine the proper labels for each band
+            # Grab the 'tag' for the band
+            band_tag = tags.get('Band_{0}'.format(iband + 1), '')
+
+            # Use 'Band X - TAG' if the tag is present, if not just 'Band X'
+            # Note that X is 1-based
+            if band_tag == '':
+                label = 'Band {id}'.format(id=iband + 1)
+            else:
+                label = 'Band {id} - {name}'.format(id=iband + 1,
+                                                    name=band_tag)
 
             # NB: We have to flip the raw data in the up-down direction
             # as Glue plots using the matplotlib imshow argument `origin='lower'`
@@ -43,6 +54,6 @@ def geospatial_reader(filename):
             # WARNING: This may cause issues with other (non-matplotlib) image
             # viewers
             data.add_component(component=np.flipud(band.astype(float)),
-                               label='Band {0}'.format(iband))
+                               label=label)
 
     return data
