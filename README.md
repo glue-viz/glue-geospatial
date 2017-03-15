@@ -1,4 +1,5 @@
-### Experimental glue plugin for satellite imagery
+Experimental glue plugin for satellite imagery
+==============================================
 
 [![Build Status](https://travis-ci.org/glue-viz/glue-geospatial.svg)](https://travis-ci.org/glue-viz/glue-geospatial?branch=master)
 [![Build status](https://ci.appveyor.com/api/projects/status/l2raw1i7avo013rv/branch/master?svg=true)](https://ci.appveyor.com/project/glue-viz/glue-geospatial/branch/master)
