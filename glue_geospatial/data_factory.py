@@ -1,9 +1,13 @@
+import os
+
 import numpy as np
 
 import rasterio
 
 from glue.core import Data
 from glue.config import data_factory
+
+from .coordinates import GeospatialLonLatCoordinates
 
 
 def is_geospatial(filename):
@@ -31,10 +35,13 @@ def geospatial_reader(filename):
         The input file
     """
 
-    data = Data()
+    data = Data(label=os.path.basename(filename).split('.')[0])
 
     with rasterio.open(filename) as src:
         tags = src.tags()
+
+        data.coords = GeospatialLonLatCoordinates(np.array(src.affine).reshape((3, 3)),
+                                                  src.crs.to_dict())
 
         for iband, band in enumerate(src.read()):
             # Grab the 'tag' for the band
