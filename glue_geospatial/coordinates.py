@@ -4,7 +4,7 @@ from astropy.wcs import WCS
 from glue.core.coordinates import Coordinates
 from astropy.visualization.wcsaxes.transforms import CurvedTransform
 from astropy import units as u
-
+from affine import Affine
 
 class GeospatialPixel2LonLat(CurvedTransform):
 
@@ -56,29 +56,32 @@ class GeospatialLonLat2Pixel(CurvedTransform):
 
 class GeospatialLonLatCoordinates(Coordinates):
 
-    def __init__(self, matrix, crs_dict):
-        self.crs_coords = MatrixCoordinates(matrix, ['Y', 'X'])
-        self.proj = Proj(**crs_dict)
+    def __init__(self, raster_reader, flipud=True):
+
+        affine = raster_reader.affine
+
+        if flipud:
+            M = raster_reader.shape[0]
+            self.affine = Affine(affine.a, -affine.b, affine.c + affine.b * M,
+                                 affine.d, -affine.e, affine.f + affine.e * M)
+        else:
+            self.affine = raster_reader.affine
+
+        self.iaffine = ~self.affine
+        self.proj = Proj(**raster_reader.crs.to_dict())
         self.axis_labels = ['Latitude', 'Longitude']
 
     def axis_label(self, axis):
         return self.axis_labels[axis]
 
     def pixel2world(self, *pixel):
-        # print("WORLD2PIXEL", pixel)
-        xy = self.crs_coords.pixel2world(pixel[0], pixel[1])
-        # print("CRS", xy)
-        world = self.proj(xy[0], xy[1], inverse=True)
-        # print("WORLD", world)
+        x, y = self.affine * pixel
+        world = self.proj(x, y, inverse=True)
         return world[0], world[1]
 
     def world2pixel(self, *world):
-        # print("WORLD2PIXEL", world)
-        xy = self.proj(world[0], world[1])
-        # print("CRS", xy)
-        pixel = self.crs_coords.world2pixel(xy[0], xy[1])
-        # print("PIXEL", pixel)
-        return pixel[0], pixel[1]
+        x, y = self.proj(world[0], world[1])
+        return self.iaffine * (x, y)
 
     @property
     def wcsaxes_dict(self):

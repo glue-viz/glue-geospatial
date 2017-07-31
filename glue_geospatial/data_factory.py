@@ -40,8 +40,7 @@ def geospatial_reader(filename):
     with rasterio.open(filename) as src:
         tags = src.tags()
 
-        data.coords = GeospatialLonLatCoordinates(np.array(src.affine).reshape((3, 3)),
-                                                  src.crs.to_dict())
+        data.coords = GeospatialLonLatCoordinates(src, flipud=True)
 
         for iband, band in enumerate(src.read()):
             # Grab the 'tag' for the band
