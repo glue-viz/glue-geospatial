@@ -1,0 +1,25 @@
+language: c
+
+sudo: false
+
+notifications:
+  email: false
+
+env:
+  global:
+    - SETUP_XVFB=True
+    - CONDA_CHANNELS="glueviz"
+    - CONDA_DEPENDENCIES="glue-core rasterio pyproj"
+  matrix:
+    - PYTHON_VERSION=2.7
+    - PYTHON_VERSION=3.6
+    - PYTHON_VERSION=2.7 CONDA_CHANNELS="glueviz/label/dev"
+    - PYTHON_VERSION=3.6 CONDA_CHANNELS="glueviz/label/dev"
+
+install:
+  - git clone git://github.com/astropy/ci-helpers.git
+  - source ci-helpers/travis/setup_conda.sh
+
+script:
+  - python setup.py check --restructuredtext
+  - py.test glue_geospatial
