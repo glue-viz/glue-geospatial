@@ -13,7 +13,7 @@ from .coordinates import GeospatialLonLatCoordinates
 def is_geospatial(filename):
     try:
         with rasterio.open(filename) as src:
-            if src.count > 0:
+            if src.count > 0 and len(src.crs.to_dict()) > 0:
                 return True
         return False
     except:
@@ -23,7 +23,7 @@ def is_geospatial(filename):
 @data_factory(
     label='Geospatial data',
     identifier=is_geospatial,
-    priority=100,
+    priority=1000,
 )
 def geospatial_reader(filename):
     """
