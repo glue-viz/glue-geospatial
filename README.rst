@@ -12,14 +12,14 @@ page <http://glueviz.org/en/latest/installation.html>`__ for
 instructions on installing glue.
 
 In addition, this plugin requires the
-`rasterio <https://mapbox.github.io/rasterio/>`__ package to be
-installed (which in turn depends on `GDAL <http://www.gdal.org>`__). If
-you are using conda, you can easily install all required dependencies
-with:
+`rasterio <https://mapbox.github.io/rasterio/>`__ and
+`pyproj <https://github.com/jswhit/pyproj>`__ packages to be
+installed. If you are using conda, you can easily install all
+required dependencies with:
 
 ::
 
-    conda install rasterio
+    conda install rasterio pyproj
 
 Installing the plugin
 ---------------------

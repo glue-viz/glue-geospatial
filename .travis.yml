@@ -9,7 +9,7 @@ env:
   global:
     - SETUP_XVFB=True
     - CONDA_CHANNELS="glueviz"
-    - CONDA_DEPENDENCIES="glue-core rasterio"
+    - CONDA_DEPENDENCIES="glue-core rasterio pyproj"
   matrix:
     - PYTHON_VERSION=2.7
     - PYTHON_VERSION=3.6
