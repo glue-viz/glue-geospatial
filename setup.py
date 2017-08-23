@@ -25,4 +25,4 @@ setup(name='glue-geospatial',
       packages=find_packages(),
       package_data={},
       entry_points=entry_points,
-      install_requires=['glue-core', 'rasterio', 'pyproj'])
+      install_requires=['glue-core>=0.11', 'rasterio', 'pyproj'])
