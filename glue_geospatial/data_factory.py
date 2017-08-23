@@ -10,6 +10,8 @@ from glue.config import data_factory
 
 from .coordinates import GeospatialLonLatCoordinates
 
+__all__ = ['is_geospatial', 'geospatial_reader']
+
 
 def is_geospatial(filename):
     try:
@@ -23,11 +25,7 @@ def is_geospatial(filename):
         return False
 
 
-@data_factory(
-    label='Geospatial data',
-    identifier=is_geospatial,
-    priority=1000,
-)
+@data_factory(label='Geospatial raster data', identifier=is_geospatial, priority=1000)
 def geospatial_reader(filename):
     """
     Read in geospatial data using the rasterio package

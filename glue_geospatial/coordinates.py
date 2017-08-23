@@ -6,6 +6,9 @@ from astropy.visualization.wcsaxes.transforms import CurvedTransform
 from astropy import units as u
 from affine import Affine
 
+__all__ = ['GeospatialLonLatCoordinates']
+
+
 class GeospatialPixel2LonLat(CurvedTransform):
 
     def __init__(self, coords):
