@@ -1,4 +1,5 @@
 import os
+import warnings
 
 import numpy as np
 
@@ -12,11 +13,13 @@ from .coordinates import GeospatialLonLatCoordinates
 
 def is_geospatial(filename):
     try:
-        with rasterio.open(filename) as src:
-            if src.count > 0 and len(src.crs.to_dict()) > 0:
-                return True
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            with rasterio.open(filename) as src:
+                if src.count > 0 and len(src.crs.to_dict()) > 0:
+                    return True
         return False
-    except:
+    except Exception:
         return False
 
 
