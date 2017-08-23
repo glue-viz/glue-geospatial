@@ -14,28 +14,22 @@ instructions on installing glue.
 In addition, this plugin requires the
 `rasterio <https://mapbox.github.io/rasterio/>`__ and
 `pyproj <https://github.com/jswhit/pyproj>`__ packages to be
-installed. If you are using conda, you can easily install all
-required dependencies with:
+installed. If you are using conda, you can easily install the
+plugin and all the required dependencies with::
 
-::
+    conda install -c glueviz glue-geospatial
 
-    conda install rasterio pyproj
+Alternatively, if you don't use conda, be sure to install the above
+dependencies then install the plugin with::
 
-Installing the plugin
----------------------
-
-To install the latest developer version of the plugin from the git
-repository, you can do::
-
-    pip install https://github.com/glue-viz/glue-geospatial/archive/master.zip
-
-This will auto-register the plugin with Glue.
+    pip install glue-geospatial
 
 Using
 -----
 
 At the moment, this plugin provides a reader based on rasterio. You can
-give glue any file that can be read by rasterio, e.g.::
+give glue any file that can be read by rasterio. For example, if
+``mydata.tif`` is a GeoTIFF file, you can do::
 
     glue mydata.tif
 
