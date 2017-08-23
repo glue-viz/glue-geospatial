@@ -12,7 +12,7 @@ environment:
                         # to the matrix section.
 
       CONDA_CHANNELS: "glueviz"
-      CONDA_DEPENDENCIES: "glueviz rasterio pyproj"
+      CONDA_DEPENDENCIES: "glue-core>=0.11 rasterio pyproj"
 
   matrix:
       - PYTHON_VERSION: "2.7"
