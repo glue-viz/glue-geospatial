@@ -29,6 +29,8 @@ dependencies then install the plugin with::
 
     pip install glue-geospatial
 
+This will auto-register the plugin with Glue.
+
 Using
 -----
 
