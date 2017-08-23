@@ -14,7 +14,12 @@ instructions on installing glue.
 In addition, this plugin requires the
 `rasterio <https://mapbox.github.io/rasterio/>`__ and
 `pyproj <https://github.com/jswhit/pyproj>`__ packages to be
-installed. If you are using conda, you can easily install the
+installed.
+
+Installing
+----------
+
+If you are using conda, you can easily install the
 plugin and all the required dependencies with::
 
     conda install -c glueviz glue-geospatial
