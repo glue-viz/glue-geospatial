@@ -12,13 +12,19 @@ environment:
                         # to the matrix section.
 
       CONDA_CHANNELS: "glueviz"
-      CONDA_DEPENDENCIES: "glue-core>=0.11 rasterio pyproj"
+      CONDA_DEPENDENCIES: "glue-core rasterio pyproj nomkl"
 
   matrix:
+
+        # We have to pin PyQt5 to a specific build with Python 2.7 to avoid
+        # segmentation faults with pyqt=5.6.0=py27_2
       - PYTHON_VERSION: "2.7"
-      - PYTHON_VERSION: "3.6"
+        CONDA_DEPENDENCIES: "glue-core rasterio pyproj nomkl pyqt=5.6.0=py27h6e61f57_6"
       - PYTHON_VERSION: "2.7"
+        CONDA_DEPENDENCIES: "glue-core rasterio pyproj nomkl pyqt=5.6.0=py27h6e61f57_6"
         CONDA_CHANNELS: "glueviz/label/dev"
+
+      - PYTHON_VERSION: "3.6"
       - PYTHON_VERSION: "3.6"
         CONDA_CHANNELS: "glueviz/label/dev"
 

@@ -6,7 +6,7 @@ from numpy.testing import assert_allclose
 from ..coordinates import MatrixCoordinates
 
 
-class TestMatrixCoordinates():
+class TestMatrixCoordinates:
 
     def setup_method(self, method):
         self.matrix = np.array([[1, 0, 3], [0, 1, 2], [0, 0, 1]])
