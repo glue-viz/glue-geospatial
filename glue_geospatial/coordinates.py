@@ -71,14 +71,14 @@ class GeospatialLonLatCoordinates(Coordinates):
             if affine is not None or crs_dict is not None:
                 raise ValueError("Either raster_reader or affine/crs_dict should be given")
 
-            affine = raster_reader.affine
+            affine = raster_reader.transform
 
             if flipud:
                 M = raster_reader.shape[0]
                 affine = Affine(affine.a, -affine.b, affine.c + affine.b * M,
                                 affine.d, -affine.e, affine.f + affine.e * M)
             else:
-                affine = raster_reader.affine
+                affine = raster_reader.transform
 
             crs_dict = raster_reader.crs.to_dict()
 
