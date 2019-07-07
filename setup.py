@@ -1,28 +1,16 @@
 #!/usr/bin/env python
-
 from __future__ import print_function
 
-from setuptools import setup, find_packages
+import sys
+from distutils.version import LooseVersion
 
-entry_points = """
-[glue.plugins]
-glue_geospatial=glue_geospatial:setup
-"""
+try:
+    import setuptools
+    assert LooseVersion(setuptools.__version__) >= LooseVersion('30.3')
+except (ImportError, AssertionError):
+    sys.stderr.write("ERROR: setuptools 30.3 or later is required\n")
+    sys.exit(1)
 
-with open('glue_geospatial/version.py') as infile:
-    exec(infile.read())
+from setuptools import setup
 
-with open('README.rst') as infile:
-    LONG_DESCRIPTION = infile.read()
-
-setup(name='glue-geospatial',
-      version=__version__,
-      description='Experimental glue plugin for geospatial imagery',
-      long_description=LONG_DESCRIPTION,
-      url="https://github.com/glue-viz/glue-geospatial",
-      author='Thomas Robitaille',
-      author_email='thomas.robitaille@gmail.com',
-      packages=find_packages(),
-      package_data={},
-      entry_points=entry_points,
-      install_requires=['glue-core>=0.11', 'rasterio', 'pyproj'])
+setup(use_scm_version=True)
