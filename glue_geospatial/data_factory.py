@@ -8,7 +8,7 @@ import rasterio
 from glue.core import Data
 from glue.config import data_factory
 
-from .coordinates import GeospatialLonLatCoordinates
+from glue_geospatial.coordinates import GeospatialLonLatCoordinates
 
 __all__ = ['is_geospatial', 'geospatial_reader']
 
