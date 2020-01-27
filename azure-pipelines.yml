@@ -1,0 +1,38 @@
+resources:
+  repositories:
+  - repository: OpenAstronomy
+    type: github
+    endpoint: glue-viz
+    name: OpenAstronomy/azure-pipelines-templates
+    ref: master
+
+jobs:
+
+- template: run-tox-env.yml@OpenAstronomy
+  parameters:
+
+    xvfb: true
+    coverage: codecov
+    libraries:
+      apt:
+        - libxkbcommon-x11-0
+
+    envs:
+
+    - linux: codestyle
+      libraries: {}
+      coverage: 'false'
+
+    - linux: py36-test-dev
+    - linux: py37-test-dev
+    # - linux: py38-test-dev
+
+    - macos: py36-test-dev
+    - macos: py37-test-dev
+    # - macos: py38-test-dev
+
+    # We add -win so that rasterio and GDAL are downloaded from
+    # https://www.lfd.uci.edu/~gohlke/pythonlibs/
+    - windows: py36-test-dev-win
+    - windows: py37-test-dev-win
+    # - windows: py38-test-dev
