@@ -31,7 +31,8 @@ jobs:
     - macos: py37-test-dev
     # - macos: py38-test-dev
 
-    # For now there are no Windows wheels for rasterio on PyPI
-    # - windows: py36-test-dev
-    # - windows: py37-test-dev
+    # We add -win so that rasterio and GDAL are downloaded from
+    # https://www.lfd.uci.edu/~gohlke/pythonlibs/
+    - windows: py36-test-dev-win
+    - windows: py37-test-dev-win
     # - windows: py38-test-dev
