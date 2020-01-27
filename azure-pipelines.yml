@@ -31,6 +31,7 @@ jobs:
     - macos: py37-test-dev
     # - macos: py38-test-dev
 
-    - windows: py36-test-dev
-    - windows: py37-test-dev
+    # For now there are no Windows wheels for rasterio on PyPI
+    # - windows: py36-test-dev
+    # - windows: py37-test-dev
     # - windows: py38-test-dev
