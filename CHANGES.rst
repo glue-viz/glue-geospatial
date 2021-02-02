@@ -1,3 +1,8 @@
+0.4 (2020-02-02)
+----------------
+
+- Fixed compatibility with the latest version of glue-core. [#21]
+
 0.3 (2019-07-08)
 ----------------
 

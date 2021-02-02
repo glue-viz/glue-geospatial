@@ -16,4 +16,4 @@ def test_geospatial(tmpdir):
     assert data.shape == (18, 24)
 
     assert_allclose(data.coords.pixel_to_world_values(9, 12),
-                    (132.440262367208, 170.83691591484046))
+                    (-3.9716666666666676, 2.9816666666666665))
