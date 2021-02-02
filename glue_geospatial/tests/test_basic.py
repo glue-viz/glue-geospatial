@@ -15,6 +15,5 @@ def test_geospatial(tmpdir):
     data = geospatial_reader(os.path.join(DATA, 'simplegeo.tif'))
     assert data.shape == (18, 24)
 
-
     assert_allclose(data.coords.pixel_to_world_values(9, 12),
                     (-3.9716666666666676, 2.9816666666666665))
