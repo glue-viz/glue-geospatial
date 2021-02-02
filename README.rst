@@ -1,7 +1,7 @@
 Experimental glue plugin for satellite imagery
 ==============================================
 
-|Build Status| |Build status|
+|Build Status|
 
 Requirements
 ------------
@@ -52,7 +52,5 @@ To run the tests, do::
 at the root of the repository. This requires the
 `pytest <http://pytest.org>`__ module to be installed.
 
-.. |Build Status| image:: https://travis-ci.org/glue-viz/glue-geospatial.svg
-   :target: https://travis-ci.org/glue-viz/glue-geospatial?branch=master
-.. |Build status| image:: https://ci.appveyor.com/api/projects/status/l2raw1i7avo013rv/branch/master?svg=true
-   :target: https://ci.appveyor.com/project/glue-viz/glue-geospatial/branch/master
+.. |Build Status| image:: https://dev.azure.com/glue-viz/glue-geospatial/_apis/build/status/glue-viz.glue-geospatial?repoName=glue-viz%2Fglue-geospatial&branchName=master
+   :target: https://dev.azure.com/glue-viz/glue-geospatial/_build/latest?definitionId=10&repoName=glue-viz%2Fglue-geospatial&branchName=master
