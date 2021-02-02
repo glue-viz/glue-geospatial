@@ -23,16 +23,15 @@ jobs:
       libraries: {}
       coverage: 'false'
 
-    - linux: py36-test-dev
-    - linux: py37-test-dev
-    # - linux: py38-test-dev
+    - linux: py36-test
+    - linux: py37-test
+    - linux: py38-test-dev
+    # - linux: py39-test-dev
 
-    - macos: py36-test-dev
-    - macos: py37-test-dev
-    # - macos: py38-test-dev
+    - macos: py36-test
+    - macos: py37-test
+    - macos: py38-test-dev
+    # - macos: py39-test-dev
 
-    # We add -win so that rasterio and GDAL are downloaded from
-    # https://www.lfd.uci.edu/~gohlke/pythonlibs/
-    - windows: py36-test-dev-win
-    - windows: py37-test-dev-win
-    # - windows: py38-test-dev
+    # We don't test on Windows since there are no rasterio wheels
+    # available there.
