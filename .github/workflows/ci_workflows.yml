@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - main
+    tags:
+    - '*'
+  pull_request:
+
+jobs:
+  initial_checks:
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
+    with:
+      coverage: false
+      envs: |
+        - linux: codestyle
+
+  tests:
+    needs: initial_checks
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
+    with:
+      coverage: codecov
+      envs: |
+        - linux: py38-test
+        - linux: py39-test
+        - linux: py310-test-dev
+        - linux: py311-test-dev
+
+        - macos: py38-test
+        - macos: py39-test
+        - macos: py310-test-dev
+        - macos: py311-test-dev
+
+        - windows: py38-test
+        - windows: py39-test
+        - windows: py310-test-dev
+        - windows: py311-test-dev
+
+  publish:
+    needs: tests
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish_pure_python.yml@v1
+    with:
+      test_extras: test
+      test_command: pytest --pyargs glue_geospatial
+    secrets:
+      pypi_token: ${{ secrets.pypi_token }}
