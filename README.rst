@@ -24,8 +24,7 @@ plugin and all the required dependencies with::
 
     conda install -c glueviz glue-geospatial
 
-Alternatively, if you don't use conda, be sure to install the above
-dependencies then install the plugin with::
+Alternatively, if you don't use conda, you can use:
 
     pip install glue-geospatial
 
@@ -47,10 +46,10 @@ Testing
 
 To run the tests, do::
 
-    py.test glue_geospatial
+    pytest glue_geospatial
 
 at the root of the repository. This requires the
 `pytest <http://pytest.org>`__ module to be installed.
 
-.. |Build Status| image:: https://dev.azure.com/glue-viz/glue-geospatial/_apis/build/status/glue-viz.glue-geospatial?repoName=glue-viz%2Fglue-geospatial&branchName=master
-   :target: https://dev.azure.com/glue-viz/glue-geospatial/_build/latest?definitionId=10&repoName=glue-viz%2Fglue-geospatial&branchName=master
+.. |Build Status| image:: https://github.com/glue-viz/glue-geospatial/actions/workflows/ci_workflows.yml/badge.svg
+   :target: https://github.com/glue-viz/glue-geospatial/actions/workflows/ci_workflows.yml
