@@ -22,7 +22,7 @@ Installing
 If you are using conda, you can easily install the
 plugin and all the required dependencies with::
 
-    conda install -c glueviz glue-geospatial
+    conda install -c conda-forge glue-geospatial
 
 Alternatively, if you don't use conda, you can use:
 
