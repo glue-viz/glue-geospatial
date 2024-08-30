@@ -1,0 +1,37 @@
+[build-system]
+requires = [ "setuptools>=61.2", "setuptools_scm",]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "glue-geospatial"
+description = "Experimental glue plugin for geospatial imagery"
+readme = "README.rst"
+requires-python = ">=3.8"
+dependencies = [ "glue-core>=1.0", "rasterio>=1.0", "pyproj>=2.3", "affine",]
+dynamic = [ "version",]
+
+[tool.setuptools_scm]
+version_file = "glue_geospatial/_version.py"
+
+[[project.authors]]
+name = "Thomas Robitaille"
+email = "thomas.robitaille@gmail.com"
+
+[project.urls]
+Homepage = "https://github.com/glue-viz/glue-geospatial"
+
+[project.optional-dependencies]
+test = [ "pytest", "pytest-cov", "pytest-faulthandler", "mock",]
+
+[tool.setuptools]
+zip-safe = true
+include-package-data = false
+
+[project.entry-points."glue.plugins"]
+glue_geospatial = "glue_geospatial:setup"
+
+[tool.setuptools.package-data]
+"glue_geospatial.tests" = [ "data/*",]
+
+[tool.setuptools.packages.find]
+namespaces = false
